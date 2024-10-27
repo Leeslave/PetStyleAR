@@ -46,6 +46,7 @@ public class Profile : MonoBehaviour
     {
         for (int i = 0; i < InputFields.Length; i++)
         {
+            isActive = false;
             if (InputFields[i].text == "")
             {
                 isActive = true;
