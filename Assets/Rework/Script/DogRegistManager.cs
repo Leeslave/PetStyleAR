@@ -40,8 +40,7 @@ public class DogRegistManager : MonoBehaviour
     {
         index++;
         StartCoroutine(FadeInImage(index));
-
-        ql.ChangeQuestion(index + 1);
+        ql.ChangeQuestion(index);
     }
 
     private IEnumerator FadeInImage(int index)

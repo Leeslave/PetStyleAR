@@ -15,24 +15,22 @@ public class LoadingUI : MonoBehaviour
     private void Start()
     {
         image.sprite = dogImages[0];
-        //StartCoroutine(UpdateLoadingImages());
     }
-    public void StartLoading()
+
+    private void OnEnable()
     {
         StartCoroutine(UpdateLoadingImages());
-        
     }
 
     private IEnumerator UpdateLoadingImages()
     {
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 16; i++)
         {
             image.sprite = dogImages[i % 3];
             yield return new WaitForSecondsRealtime(0.2f);
         }
-        yield return new WaitForSecondsRealtime(3.0f);
-        register.SetActive(true);
-        gameObject.SetActive(false);
+        yield return new WaitForSecondsRealtime(0.1f);
+        GetComponentInParent<UIFadeController>().ScreenChange(gameObject, register);
     }
 
 }

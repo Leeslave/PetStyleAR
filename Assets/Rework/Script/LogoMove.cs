@@ -62,7 +62,7 @@ public class LogoMove : MonoBehaviour
             float t = Mathf.Clamp01(elapsedTime / moveDuration);
 
             // Slerp를 사용한 위치 보간
-            sloganRectTransform.anchoredPosition = Vector3.Slerp(startPosition, endPosition, t);
+            sloganRectTransform.anchoredPosition = Vector3.Lerp(startPosition, endPosition, t);
             yield return null;
         }
         sloganRectTransform.anchoredPosition = endPosition;
@@ -117,8 +117,9 @@ public class LogoMove : MonoBehaviour
 
     public void SwapImage()
     {
-        lui.gameObject.SetActive(true);
-        lui.StartLoading();
-        gameObject.SetActive(false);
+        //lui.gameObject.SetActive(true);
+        GetComponentInParent<UIFadeController>().ScreenChange(gameObject, lui.gameObject);
+        //lui.StartLoading();
+        //gameObject.SetActive(false);
     }
 }

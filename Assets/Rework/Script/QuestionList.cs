@@ -10,7 +10,7 @@ public class QuestionList : MonoBehaviour
     [SerializeField] TMP_Text text;
     float elapsedTime = 0;
 
-    private float fadeDuration = .5f;
+    private float fadeDuration = .3f;
 
     public void ChangeQuestion(int idx)
     {
