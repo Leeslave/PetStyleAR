@@ -366,7 +366,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033093592889448831}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -375,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.5, y: -411}
+  m_AnchoredPosition: {x: 196.5, y: -411.00003}
   m_SizeDelta: {x: 167, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249943259260479649
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 8516151145863614594}
   - component: {fileID: 7049939060742479361}
   - component: {fileID: 5406371248328206254}
-  - component: {fileID: 8351432266280046405}
+  - component: {fileID: 3262315010607685728}
   m_Layer: 0
   m_Name: 001.Login
   m_TagString: Untagged
@@ -726,7 +726,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 0}
---- !u!114 &8351432266280046405
+--- !u!114 &3262315010607685728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -735,15 +735,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2350004812137297832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93c2599fb0e8af4292252f073542167, type: 3}
+  m_Script: {fileID: 11500000, guid: cf3ac7378278eac46b50eb21407dd780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slogan: {fileID: 5055551895153651931}
-  logoImage: {fileID: 6773428470683396132}
-  registerButton: {fileID: 6152080006261698732}
-  logInButton: {fileID: 2312202327383659815}
-  Login: {fileID: 858050928300516441}
-  Register: {fileID: 397984721566894767}
+  logo: {fileID: 6773428470683396132}
+  login: {fileID: 7611410975157285941}
+  register: {fileID: 2080653322346216521}
 --- !u!1 &5055551895153651931
 GameObject:
   m_ObjectHideFlags: 0

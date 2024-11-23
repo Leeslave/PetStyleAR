@@ -114,12 +114,4 @@ public class LogoMove : MonoBehaviour
         finalColor.a = 1;
         logoImage.color = finalColor;
     }
-
-    public void SwapImage()
-    {
-        //lui.gameObject.SetActive(true);
-        GetComponentInParent<UIFadeController>().ScreenChange(gameObject, lui.gameObject);
-        //lui.StartLoading();
-        //gameObject.SetActive(false);
-    }
 }
