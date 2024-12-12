@@ -6,11 +6,14 @@ using UnityEngine;
 public class MainManager : MonoBehaviour
 {
     private bool view;
+    private bool hood;
     [SerializeField] XROrigin xrOrigin;
     [SerializeField] Camera targetCamera;
     private Vector2 previousTouchPosition;
     private bool isTouching = false;
+    [SerializeField] GameObject background;
     [SerializeField] GameObject dog;
+    [SerializeField] GameObject dog2;
 
     // 회전 속도 조절
     public float rotationSpeed = 0.2f;
@@ -18,47 +21,80 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        view = false;
+        hood = true;
+        background.SetActive(false);
+        dog2.SetActive(false);
         targetCamera.gameObject.SetActive(false);    
     }
 
     public void Activate()
     {
-        xrOrigin.gameObject.SetActive(false);
-        targetCamera.gameObject.SetActive(true);
-        view = true;
+        if (!view)
+        {
+            xrOrigin.gameObject.SetActive(false);
+            targetCamera.gameObject.SetActive(true);
+            background.SetActive(true);
+            view = true;
+            return;
+        }
+        else
+        {
+            xrOrigin.gameObject.SetActive(true);
+            targetCamera.gameObject.SetActive(false);
+            background.SetActive(false);
+            view = false;
+            return;
+        }
+        
     }
-
-    public void Deactivate()
+    
+    public void ChangeCloth()
     {
-        xrOrigin.gameObject.SetActive(true);
-        targetCamera.gameObject.SetActive(false);
-        view = false;
+        if (hood)
+        {
+            dog.SetActive(false);
+            dog2.SetActive(true);
+            hood = false;
+            return;
+        }
+        else
+        {
+            dog.SetActive(true);
+            dog2.SetActive(false);
+            hood = true;
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // 마우스 클릭 시작
+        if (view)
         {
-            isTouching = true;
-            previousTouchPosition = Input.mousePosition;
-        }
-        else if (Input.GetMouseButton(0) && isTouching) // 마우스 드래그 중
-        {
-            Vector2 currentMousePosition = Input.mousePosition;
-            Vector2 deltaPosition = currentMousePosition - previousTouchPosition;
+            if (Input.GetMouseButtonDown(0)) // 마우스 클릭 시작
+            {
+                isTouching = true;
+                previousTouchPosition = Input.mousePosition;
+            }
+            else if (Input.GetMouseButton(0) && isTouching) // 마우스 드래그 중
+            {
+                Vector2 currentMousePosition = Input.mousePosition;
+                Vector2 deltaPosition = currentMousePosition - previousTouchPosition;
 
-            // 오브젝트 회전
-            //float rotationX = deltaPosition.y * rotationSpeed;
-            float rotationY = -deltaPosition.x * rotationSpeed;
+                // 오브젝트 회전
+                //float rotationX = deltaPosition.y * rotationSpeed;
+                float rotationY = -deltaPosition.x * rotationSpeed;
 
-            dog.transform.Rotate(0, rotationY, 0, Space.World);
+                if (hood) dog.transform.Rotate(0, rotationY, 0, Space.World);
+                else dog2.transform.Rotate(0, rotationY, 0, Space.World);
 
-            previousTouchPosition = currentMousePosition; // 현재 위치를 이전 위치로 저장
+                previousTouchPosition = currentMousePosition; // 현재 위치를 이전 위치로 저장
+            }
+            else if (Input.GetMouseButtonUp(0)) // 마우스 클릭 종료
+            {
+                isTouching = false;
+            }
         }
-        else if (Input.GetMouseButtonUp(0)) // 마우스 클릭 종료
-        {
-            isTouching = false;
-        }
+        
         //if (Input.touchCount > 0)
         //{
         //    Touch touch = Input.GetTouch(0);
